@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+
+option (wdcli.appid) = "account.service";
+option go_package="proto";
+package test;
+
+
+service Test{
+	rpc TestRpc (TestRpcReq) returns (TestRpcResp);
+}
+
+message TestRpcReq {
+	int64 tp = 1;
+	string message = 2;
+	map<string, int64> maps = 3;
+}
+
+message TestRpcResp{
+	int64 tpr = 1;
+}
