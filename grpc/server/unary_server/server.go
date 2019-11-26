@@ -3,7 +3,7 @@ package main
 import (
 	"context"
 	"go-bbq/pkg/net/grpc/go-grpc-middleware/retry"
-	"gotest/proto"
+	"gotest/grpc/unary_proto/proto"
 	"time"
 
 	"google.golang.org/grpc/codes"

@@ -1,25 +1,82 @@
+# github.com/beorn7/perks v1.0.0
+github.com/beorn7/perks/quantile
 # github.com/cppbird/cron/v3 v3.0.1
 github.com/cppbird/cron/v3
+# github.com/go-playground/locales v0.11.2
+github.com/go-playground/locales
+github.com/go-playground/locales/currency
+# github.com/go-playground/universal-translator v0.0.0-20170327191703-71201497bace
+github.com/go-playground/universal-translator
 # github.com/gogo/protobuf v1.3.0
-github.com/gogo/protobuf/gogoproto
 github.com/gogo/protobuf/proto
+github.com/gogo/protobuf/gogoproto
+github.com/gogo/protobuf/types
 github.com/gogo/protobuf/protoc-gen-gogo/descriptor
+github.com/gogo/protobuf/sortkeys
 # github.com/golang/protobuf v1.3.2
 github.com/golang/protobuf/proto
 github.com/golang/protobuf/ptypes
-github.com/golang/protobuf/ptypes/any
 github.com/golang/protobuf/ptypes/duration
 github.com/golang/protobuf/ptypes/timestamp
+github.com/golang/protobuf/ptypes/any
 # github.com/grpc-ecosystem/go-grpc-middleware v1.1.0
 github.com/grpc-ecosystem/go-grpc-middleware/retry
 github.com/grpc-ecosystem/go-grpc-middleware/util/backoffutils
 github.com/grpc-ecosystem/go-grpc-middleware/util/metautils
 # github.com/json-iterator/go v1.1.8
 github.com/json-iterator/go
-# github.com/modern-go/concurrent v0.0.0-20180228061459-e0a39a4cb421
+# github.com/konsorten/go-windows-terminal-sequences v1.0.1
+github.com/konsorten/go-windows-terminal-sequences
+# github.com/matttproud/golang_protobuf_extensions v1.0.1
+github.com/matttproud/golang_protobuf_extensions/pbutil
+# github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd
 github.com/modern-go/concurrent
-# github.com/modern-go/reflect2 v0.0.0-20180701023420-4b7aa43c6742
+# github.com/modern-go/reflect2 v1.0.1
 github.com/modern-go/reflect2
+# github.com/pkg/errors v0.8.1
+github.com/pkg/errors
+# github.com/prometheus/client_golang v0.9.3-0.20190127221311-3c4408c8b829
+github.com/prometheus/client_golang/prometheus/promhttp
+github.com/prometheus/client_golang/prometheus
+github.com/prometheus/client_golang/prometheus/internal
+# github.com/prometheus/client_model v0.0.0-20190115171406-56726106282f
+github.com/prometheus/client_model/go
+# github.com/prometheus/common v0.2.0
+github.com/prometheus/common/expfmt
+github.com/prometheus/common/model
+github.com/prometheus/common/internal/bitbucket.org/ww/goautoneg
+# github.com/prometheus/procfs v0.0.0-20190117184657-bf6a532e95b1
+github.com/prometheus/procfs
+github.com/prometheus/procfs/nfs
+github.com/prometheus/procfs/xfs
+github.com/prometheus/procfs/internal/util
+# github.com/sirupsen/logrus v1.4.2
+github.com/sirupsen/logrus
+# go-common v0.2.27 => git.bilibili.co/platform/go-common v0.2.27
+go-common/library/net/http/blademaster
+go-common/library/net/http/blademaster/binding
+go-common/library/ecode
+go-common/library/conf/dsn
+go-common/library/conf/env
+go-common/library/log
+go-common/library/net/criticality
+go-common/library/net/device
+go-common/library/net/http/blademaster/render
+go-common/library/net/ip
+go-common/library/net/metadata
+go-common/library/net/netutil/breaker
+go-common/library/net/trace
+go-common/library/rate/limit
+go-common/library/rate/limit/bbr
+go-common/library/stat/metric
+go-common/library/time
+go-common/library/ecode/internal/types
+go-common/library/log/internal/core
+go-common/library/log/internal/filewriter
+go-common/library/net/netutil
+go-common/library/container/group
+go-common/library/net/trace/proto
+go-common/library/stat/sys/cpu
 # golang.org/x/net v0.0.0-20191105084925-a882066a44e0
 golang.org/x/net/trace
 golang.org/x/net/internal/timeseries
@@ -27,7 +84,7 @@ golang.org/x/net/http2
 golang.org/x/net/http2/hpack
 golang.org/x/net/http/httpguts
 golang.org/x/net/idna
-# golang.org/x/sys v0.0.0-20190422165155-953cdadca894
+# golang.org/x/sys v0.0.0-20190710143415-6ec70d6a5542
 golang.org/x/sys/unix
 # golang.org/x/text v0.3.2
 golang.org/x/text/secure/bidirule
@@ -40,7 +97,6 @@ google.golang.org/genproto/googleapis/rpc/status
 google.golang.org/grpc
 google.golang.org/grpc/codes
 google.golang.org/grpc/status
-google.golang.org/grpc/metadata
 google.golang.org/grpc/balancer
 google.golang.org/grpc/balancer/roundrobin
 google.golang.org/grpc/connectivity
@@ -58,6 +114,7 @@ google.golang.org/grpc/internal/grpcrand
 google.golang.org/grpc/internal/grpcsync
 google.golang.org/grpc/internal/transport
 google.golang.org/grpc/keepalive
+google.golang.org/grpc/metadata
 google.golang.org/grpc/naming
 google.golang.org/grpc/peer
 google.golang.org/grpc/resolver
@@ -70,3 +127,5 @@ google.golang.org/grpc/balancer/base
 google.golang.org/grpc/credentials/internal
 google.golang.org/grpc/binarylog/grpc_binarylog_v1
 google.golang.org/grpc/internal/syscall
+# gopkg.in/go-playground/validator.v9 v9.9.1
+gopkg.in/go-playground/validator.v9

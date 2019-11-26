@@ -1,0 +1,20 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "api.proto",
+        "version": ""
+    },
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "consumes": [
+        "application/json",
+        "multipart/form-data"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {},
+    "definitions": {}
+}
