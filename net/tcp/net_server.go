@@ -1,7 +1,10 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"io/ioutil"
+	"log"
 	"net"
 )
 
@@ -25,8 +28,10 @@ func handleConn(c net.Conn) {
 	defer c.Close()
 
 	for {
-		b := make([]byte, 100)
-		fmt.Println(c.Read(b))
-		c.Write([]byte("test"))
+		reader := bufio.NewReader(c)
+		bytes, _ := reader.Read(p)
+		ioutil.WriteFile("fuck.mp4", bytes, 0644)
+		log.Printf("fuck.mp4 done")
+		return
 	}
 }
