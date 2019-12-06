@@ -1,6 +1,7 @@
 package main
 
-// "errors"
+import "fmt"
 
 func main() {
+	fmt.Println("hello world")
 }
