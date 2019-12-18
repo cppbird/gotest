@@ -1,7 +1,16 @@
 package main
 
-import "fmt"
+type F struct {
+	J int
+}
+
+type A interface {
+	a(int) int
+}
 
 func main() {
-	fmt.Println("hello world")
+	a := 1
+	b := a+1
+	fmt.Println(b)
 }
+

@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+import "go-common/library/net/rpc/warden/wdcli/wdcli.proto";
 
 option (wdcli.appid) = "account.service";
 option go_package="proto";
