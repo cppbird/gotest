@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"fmt"
-	pb "gotest/proto"
 	"time"
 
 	grpc_retry "github.com/grpc-ecosystem/go-grpc-middleware/retry"
@@ -18,7 +17,7 @@ func main() {
 		return
 	}
 	defer conn.Close()
-	c := pb.NewTestClient(conn)
-	_, err = c.TestRpc(context.TODO(), &pb.TestRpcReq{Tp: 123}, grpc_retry.WithMax(4), grpc_retry.WithPerRetryTimeout(1000*time.Millisecond), grpc_retry.WithCodes(codes.InvalidArgument))
+	c := proto.NewTestClient(conn)
+	_, err = c.TestRpc(context.TODO(), &proto.TestRpcReq{Tp: 123}, grpc_retry.WithMax(4), grpc_retry.WithPerRetryTimeout(1000*time.Millisecond), grpc_retry.WithCodes(codes.InvalidArgument))
 	fmt.Println(err)
 }
