@@ -1,16 +1,7 @@
 package main
 
-type F struct {
-	J int
-}
-
-type A interface {
-	a(int) int
-}
+import "gotest/pa"
 
 func main() {
-	a := 1
-	b := a+1
-	fmt.Println(b)
+	pa.Abc()
 }
-
