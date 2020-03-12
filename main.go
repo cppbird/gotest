@@ -1,22 +1,21 @@
 package main
 
-import (
-	"net/http"
-	"time"
-)
-
-var mt = make(map[int]string)
-
-var ts []int64
-
-var tl = 1 << 10 * 3
+import jsoniter "github.com/json-iterator/go"
 
 func main() {
-	http.HandleFunc("/test", Test)
-	http.ListenAndServe("127.0.0.1:8000", nil)
-	http.TimeoutHandler
+	a := []ExprNode{}
+	for i := 0; i < 10; i++ {
+		a = append(a, ExprNode{
+			Left: i,
+		})
+	}
 }
 
-func Test(resp http.ResponseWriter, r *http.Request) {
-	time.Sleep(5)
+type ExprNode struct {
+	Left          uint8  `json:"left"`
+	CompOperator  uint8  `json:"comp_operator"`
+	Value         string `json:"value"`
+	LogicOperator string `json:"logic_operator"`
 }
+
+type Expr []ExprNode

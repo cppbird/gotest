@@ -3,13 +3,12 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"io/ioutil"
-	"log"
 	"net"
+	"time"
 )
 
 func main() {
-	conn, err := net.Listen("tcp", "127.0.0.1:8000")
+	conn, err := net.Listen("tcp", "127.0.0.1:9941")
 	if err != nil {
 		fmt.Println(err)
 		return
@@ -26,12 +25,10 @@ func main() {
 
 func handleConn(c net.Conn) {
 	defer c.Close()
-
+	reader := bufio.NewReader(c)
 	for {
-		reader := bufio.NewReader(c)
-		bytes, _ := reader.Read(p)
-		ioutil.WriteFile("fuck.mp4", bytes, 0644)
-		log.Printf("fuck.mp4 done")
-		return
+		m, _ := reader.ReadBytes('\n')
+		time.Sleep(100 * time.Second)
+		fmt.Println(string(m))
 	}
 }
