@@ -1,21 +1,19 @@
 package main
 
-import jsoniter "github.com/json-iterator/go"
+import (
+	"errors"
+	"fmt"
+)
 
 func main() {
-	a := []ExprNode{}
-	for i := 0; i < 10; i++ {
-		a = append(a, ExprNode{
-			Left: i,
-		})
+	fmt.Println(abc())
+}
+
+func abc() (s string, err error) {
+	m, err := 1, errors.New("fuck")
+	if true {
+		fmt.Println(m)
+		// err = errors.New("you")
 	}
+	return
 }
-
-type ExprNode struct {
-	Left          uint8  `json:"left"`
-	CompOperator  uint8  `json:"comp_operator"`
-	Value         string `json:"value"`
-	LogicOperator string `json:"logic_operator"`
-}
-
-type Expr []ExprNode
