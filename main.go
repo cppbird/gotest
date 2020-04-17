@@ -1,19 +1,35 @@
 package main
 
-import (
-	"errors"
-	"fmt"
-)
+/*
+#include <stdio.h>
+
+void printint() {
+ 	int *ptr = NULL;
+	*ptr = 0;
+}
+*/
+import "C"
 
 func main() {
-	fmt.Println(abc())
+
+	C.printint()
 }
 
-func abc() (s string, err error) {
-	m, err := 1, errors.New("fuck")
-	if true {
-		fmt.Println(m)
-		// err = errors.New("you")
-	}
-	return
-}
+// func t() {
+// 	s := struct {
+// 		a byte
+// 		b byte
+// 		c byte
+// 		d int64
+// 	}{0, 0, 0, 0}
+
+// 	// 将结构体指针转换为通用指针
+// 	p := unsafe.Pointer(&s)
+// 	up0 := uintptr(p)
+// 	fmt.Println(up0)
+// 	up0 += 10000000000
+// 	fmt.Println(up0)
+// 	pp := unsafe.Pointer(up0)
+// 	p1 := (*byte)(pp)
+// 	fmt.Println(*p1)
+// }
