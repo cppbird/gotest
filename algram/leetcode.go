@@ -8,6 +8,24 @@ import (
 	"github.com/0xAX/go-algorithms/stack"
 )
 
+func main() {
+	a := []int{-1}
+	maxSubArray(a)
+}
+
+// 53. 最大子序和
+// 状态方程 f(x) = max{f(x-1) + ai, ai, f(x-1)}
+func maxSubArray(nums []int) int {
+	var res int = nums[0]
+	var pre int
+	for i := 0; i < len(nums); i++ {
+		pre = max(pre+nums[i], nums[i])
+		res = max(pre, res)
+		fmt.Println(pre, res)
+	}
+	return res
+}
+
 func compressString(S string) string {
 	var lastChar int32
 	var cnt int
@@ -449,6 +467,10 @@ func gameOfLife(board [][]int) {
 // common func
 func max(a ...int) int {
 	var max int
+	if len(a) < 1 {
+		return max
+	}
+	max = a[0]
 	for _, v := range a {
 		if max < v {
 			max = v
