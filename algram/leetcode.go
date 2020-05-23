@@ -620,19 +620,79 @@ func (this *MyHashMap) Remove(key int) {
 	}
 }
 
-func waysToChange(n int) int {
-	if n == 0 {
-		return 1
+// 逆序数 用分治思想，和归并排序类似
+// 基本思想是，将其分A、B两组，总逆序数T = 分组逆序数Ta + Tb + 分组间逆序数。
+func reversePairs(nums []int) int {
+	return fenzhi(nums, 0, len(nums)-1)
+}
+
+func fenzhi(arr []int, start, end int) int {
+	if start >= end {
+		return 0
 	}
-	if n >= 25 {
-		return waysToChange(n-25) + waysToChange(n-10) + waysToChange(n-5) + waysToChange(n-1)
+	var cnt = 0
+	mid := start + (end-start)/2
+	cnt = fenzhi(arr, start, mid) + fenzhi(arr, mid+1, end)
+	i, j, index := start, mid+1, 0
+	var tmp = make([]int, end-start+1)
+	for {
+		if arr[i] > arr[j] {
+			tmp[index] = arr[j]
+			j++
+			cnt++
+			index++
+			if j > end {
+				tmp = append(tmp, arr[i:mid]...)
+				break
+			}
+		} else {
+			tmp[index] = arr[i]
+			i++
+			index++
+			if i > mid {
+				tmp = append(tmp, arr[j-1:end]...)
+				break
+			}
+		}
 	}
-	if n >= 10 {
-		return waysToChange(n-10) + waysToChange(n-5) + waysToChange(n-1)
+	for k := 0; k < start-end+1; k++ {
+		arr[start+k] = tmp[k]
+	}
+	return cnt
+}
+
+func main() {
+
+}
+
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func isBalanced(root *TreeNode) bool {
+	return treedep(root) >= 0
+}
+
+func treedep(root *TreeNode) int {
+	if root == nil {
+		return 0
 	}
 
-	if n >= 5 {
-		return waysToChange(n-5) + waysToChange(n-1)
+	var lh, rh int
+
+	if lh = treedep(root.Left); lh < 0 {
+		return -1
 	}
-	return waysToChange(n - 1)
+	if rh = treedep(root.Right); rh < 0 {
+		return -1
+	}
+	cha := lh - rh
+	if cha^(cha>>31)-cha>>31 > 1 {
+		return -1
+	}
+	return max(lh, rh) + 1
 }
