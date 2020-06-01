@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net"
+	"time"
 )
 
 func main() {
@@ -22,5 +23,7 @@ func main() {
 			fmt.Println(err)
 			return
 		}
+		time.Sleep(1 * time.Second)
+		return
 	}
 }

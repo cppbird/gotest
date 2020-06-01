@@ -1,7 +1,6 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
 	"net"
 	"time"
@@ -25,10 +24,13 @@ func main() {
 
 func handleConn(c net.Conn) {
 	defer c.Close()
-	reader := bufio.NewReader(c)
+	fmt.Println("get conn")
 	for {
-		m, _ := reader.ReadBytes('\n')
-		time.Sleep(100 * time.Second)
-		fmt.Println(string(m))
+		buf := make([]byte, 10)
+		time.Sleep(1 * time.Second)
+		_, err := c.Read(buf)
+		if err != nil {
+			fmt.Println(err)
+		}
 	}
 }
