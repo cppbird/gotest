@@ -23,6 +23,7 @@ func main() {
 }
 
 func handleConn(c net.Conn) {
+	fmt.Println("get one conn", c.RemoteAddr().String())
 	defer c.Close()
 	fmt.Println("get conn")
 	for {
@@ -33,4 +34,5 @@ func handleConn(c net.Conn) {
 			fmt.Println(err)
 		}
 	}
+
 }
