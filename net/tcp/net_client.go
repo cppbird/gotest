@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net"
+	"time"
 )
 
 func main() {
@@ -15,12 +16,17 @@ func main() {
 	if err != nil {
 		return
 	}
-	defer conn.Close()
+	fmt.Println("dial ok", conn.RemoteAddr().String())
+	defer func() {
+		conn.Close()
+		fmt.Println("close conn")
+	}()
 
-	for {
-		if _, err := conn.Write([]byte("foo")); err != nil {
-			fmt.Println(err)
-			return
-		}
+	if _, err := conn.Write([]byte("foo\n")); err != nil {
+		fmt.Println(err)
+		return
 	}
+	time.Sleep(5000 * time.Second)
+	fmt.Println("ok")
+
 }
