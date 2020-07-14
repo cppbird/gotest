@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"net"
-	"time"
 )
 
 func main() {
@@ -20,19 +19,20 @@ func main() {
 		}
 		go handleConn(a)
 	}
+
 }
 
 func handleConn(c net.Conn) {
 	fmt.Println("get one conn", c.RemoteAddr().String())
-	defer c.Close()
 	fmt.Println("get conn")
 	for {
 		buf := make([]byte, 10)
-		time.Sleep(1 * time.Second)
 		_, err := c.Read(buf)
 		if err != nil {
 			fmt.Println(err)
+			return
 		}
+		fmt.Printf("read %s", string(buf))
 	}
 
 }

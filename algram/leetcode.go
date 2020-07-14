@@ -9,8 +9,32 @@ import (
 )
 
 func main() {
-	a := []int{-1}
-	maxSubArray(a)
+	fmt.Println(isValid("()"))
+}
+
+func isValid(s string) bool {
+	length := len(s)
+	m := map[byte]byte{
+		'[': ']',
+		'{': '}',
+		'(': ')',
+	}
+	rec := make([]uint8, 0, length/2+1)
+	for i := 0; i < len(s); i++ {
+		switch s[i] {
+		case '[', '(', '{':
+			rec = append(rec, s[i])
+		default:
+			if len(rec) == 0 || m[rec[len(rec)-1]] != s[i] {
+				return false
+			}
+			rec = rec[:len(rec)-1]
+		}
+	}
+	if len(rec) == 0 {
+		return true
+	}
+	return false
 }
 
 // 53. 最大子序和
@@ -659,10 +683,6 @@ func fenzhi(arr []int, start, end int) int {
 		arr[start+k] = tmp[k]
 	}
 	return cnt
-}
-
-func main() {
-
 }
 
 /**

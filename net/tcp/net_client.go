@@ -27,10 +27,7 @@ func main() {
 			fmt.Println(err)
 			return
 		}
+		fmt.Println("write foo")
 		time.Sleep(1 * time.Second)
-		return
 	}
-	time.Sleep(5000 * time.Second)
-	fmt.Println("ok")
-
 }

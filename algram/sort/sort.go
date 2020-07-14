@@ -1,13 +1,18 @@
-package main
+// Package sort is used to organize all sorting algrorithms
+package sort
 
-func MergeSort(array []int) []int {
-	n := len(array)
+// Arr is int array for sorting
+type Arr []int
+
+// MergeSort sort tc:nlogn sc:n stable
+func (arr Arr) MergeSort() []int {
+	n := len(arr)
 	if n < 2 {
-		return array
+		return arr
 	}
 	key := n / 2
-	left := MergeSort(array[0:key])
-	right := MergeSort(array[key:])
+	left := arr[0:key].MergeSort()
+	right := arr.MergeSort()
 	return merge(left, right)
 }
 
@@ -23,7 +28,6 @@ func merge(left []int, right []int) []int {
 				copy(newArr[index:], left[i:])
 				break
 			}
-
 		} else {
 			newArr[index] = left[i]
 			index++
@@ -37,44 +41,61 @@ func merge(left []int, right []int) []int {
 	return newArr
 }
 
-func main() {}
+// tc:n^2 insertion,bubble stable
 
-// MergeSortP .
-func MergeSortP(arr []int) []int {
-	l := len(arr)
-	if l < 2 {
-		return arr
+// Insertion sort tc:n^2 sc:1 stable
+func (arr Arr) Insertion() {
+	for i := 1; i < len(arr); i++ {
+		tmp := arr[i]
+		for j := i; j > 0 && arr[j] > arr[j-1]; j++ {
+			arr[j] = arr[j-1]
+		}
+		arr[i] = tmp
 	}
-	exci := l / 2
-	left := MergeSortP(arr[:exci])
-	right := MergeSortP(arr[exci:])
-
-	return mergeP(left, right)
 }
 
-func mergeP(l, r []int) []int {
-	ll := len(l)
-	lr := len(r)
-	tmp := make([]int, ll+lr)
-	i, j, index := 0, 0, 0
-	for {
-		if l[i] > r[j] {
-			tmp[index] = r[j]
-			index++
-			j++
-			if j == lr {
-				copy(tmp[index:], r[i:])
-				break
-			}
-		} else {
-			tmp[index] = l[i]
-			index++
-			i++
-			if i == ll {
-				copy(tmp[index:], l[j:])
-				break
+// Bubble sort tc:n^2 sc:1 stable
+func (arr Arr) Bubble() {
+	arrLen := len(arr)
+	if arrLen <= 1 {
+		return
+	}
+	for i := 0; i < arrLen; i++ {
+		for j := arrLen - 1; j > i; j++ {
+			if arr[j] < arr[j-1] {
+				tmp := arr[j-1]
+				arr[j-1] = arr[j]
+				arr[j] = tmp
 			}
 		}
 	}
-	return tmp
+	return
+}
+
+// Selection sort tc:n^2 sc:1 unstable
+func (arr Arr) Selection() {
+	for i := 0; i < len(arr); i++ {
+		min := i
+		for j := i + 1; j < len(arr); j++ {
+			if arr[j] < arr[min] {
+				min = j
+			}
+		}
+		arr[i], arr[min] = arr[min], arr[i]
+	}
+}
+
+// Shell sort tc:n^3/2 sc:1 unstable
+func (arr Arr) Shell() {
+
+}
+
+// Heap sort tc:nlogn sc:n unstable
+func (arr Arr) Heap() {
+
+}
+
+// Quick sort tc:nlogn sc:n stable : unconfirm
+func (arr Arr) Quick() {
+
 }
