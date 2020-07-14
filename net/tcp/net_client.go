@@ -22,8 +22,12 @@ func main() {
 		fmt.Println("close conn")
 	}()
 
-	if _, err := conn.Write([]byte("foo\n")); err != nil {
-		fmt.Println(err)
+	for {
+		if _, err := conn.Write([]byte("foo")); err != nil {
+			fmt.Println(err)
+			return
+		}
+		time.Sleep(1 * time.Second)
 		return
 	}
 	time.Sleep(5000 * time.Second)

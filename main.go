@@ -1,37 +1,28 @@
 package main
 
-func main() {
-	// fs := Fs{
-	// 	List: []int64{12, 4},
-	// }
-	// fss := FsStr{
-	// 	List: []string{"fuck"},
-	// }
-	// r := Rules{
-	// 	ArchiveType: &ArchiveType{
-	// 		TID:    []Fs{fs},
-	// 		SubTID: []Fs{fs},
-	// 	},
-	// 	UPRule: &UPRule{
-	// 		UName: []string{"fuck"},
-	// 		MID:   []Fs{fs},
-	// 		Fans:  123,
-	// 	},
-	// 	ArchiveProperty: &ArchiveProperty{
-	// 		Titles: []FsStr{fss},
-	// 		Ratio: []*Ratio{
-	// 			&Ratio{
-	// 				SubTID: []int64{1, 23},
-	// 				MinYX:  0.23,
-	// 				MaxYX:  0.89,
-	// 			},
-	// 		},
-	// 		Tags: []FsStr{fss},
-	// 	},
-	// }
-	// str, _ := json.Marshal(&r)
-	// a := strings.Split("a", ",")
+import (
+	"fmt"
+	"reflect"
+	"unsafe"
+)
 
-	// Pass a context with a timeout to tell a blocking function that it
-	// should abandon its work after the timeout elapses.
+const M = 10
+const N = 5
+
+func printOriginalSlice(subslice *[]int) {
+	data := (*[M]int)(unsafe.Pointer(((*reflect.SliceHeader)(unsafe.Pointer(subslice))).Data))
+
+	fmt.Printf("original\t%p:%+v\n", data, *data)
+}
+
+func main() {
+	slice := make([]int, M)
+	for i, _ := range slice {
+		slice[i] = i
+	}
+	subslice := slice[0:N]
+
+	fmt.Printf("slice\t%p:%+v\n", &slice, slice)
+	fmt.Printf("subslice\t%p:%+v\n", &subslice, subslice)
+	printOriginalSlice(&subslice)
 }
