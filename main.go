@@ -1,28 +1,21 @@
 package main
 
 import (
-	"fmt"
-	"reflect"
-	"unsafe"
+	"github.com/alecthomas/jsonschema"
 )
 
-const M = 10
-const N = 5
-
-func printOriginalSlice(subslice *[]int) {
-	data := (*[M]int)(unsafe.Pointer(((*reflect.SliceHeader)(unsafe.Pointer(subslice))).Data))
-
-	fmt.Printf("original\t%p:%+v\n", data, *data)
+type S10 struct {
+	Gs []GameScore `json:"gs"`
+	Vs []Video     `json:"vs"`
+}
+type GameScore struct {
+}
+type Video struct {
+	Svids     []int64 `json:"svids"`
+	EndTime   []int64 `json:"end_time"`
+	StartTime []int64 `json:""`
 }
 
 func main() {
-	slice := make([]int, M)
-	for i, _ := range slice {
-		slice[i] = i
-	}
-	subslice := slice[0:N]
-
-	fmt.Printf("slice\t%p:%+v\n", &slice, slice)
-	fmt.Printf("subslice\t%p:%+v\n", &subslice, subslice)
-	printOriginalSlice(&subslice)
+	jsonschema.Reflect(&TestUser{})
 }

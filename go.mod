@@ -4,6 +4,7 @@ go 1.12
 
 require (
 	github.com/0xAX/go-algorithms v0.0.0-20200217074550-6b9cd74ea7d9
+	github.com/alecthomas/jsonschema v0.0.0-20200530073317-71f438968921 // indirect
 	github.com/golang-collections/collections v0.0.0-20130729185459-604e922904d3 // indirect
 	github.com/json-iterator/go v1.1.9
 	github.com/kavu/go_reuseport v1.5.0 // indirect

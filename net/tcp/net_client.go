@@ -22,11 +22,12 @@ func main() {
 		fmt.Println("close conn")
 	}()
 
-	for {
+	for i := 0; i < 10; i++ {
 		if _, err := conn.Write([]byte("foo")); err != nil {
 			fmt.Println(err)
 			return
 		}
+
 		fmt.Println("write foo")
 		time.Sleep(1 * time.Second)
 	}

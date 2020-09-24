@@ -2,6 +2,8 @@ github.com/0xAX/go-algorithms v0.0.0-20190513073715-9f095a1fbe92 h1:3Lo9tvx/DPUd
 github.com/0xAX/go-algorithms v0.0.0-20190513073715-9f095a1fbe92/go.mod h1:aQUeBxnHJLnIG680qASHbe20gv0UHwCUGCT92MGORik=
 github.com/0xAX/go-algorithms v0.0.0-20200217074550-6b9cd74ea7d9 h1:2G1fg/r3lUj+Z1z/EnUcp7D3RL8gU4YxFoHTCy9bs9M=
 github.com/0xAX/go-algorithms v0.0.0-20200217074550-6b9cd74ea7d9/go.mod h1:aQUeBxnHJLnIG680qASHbe20gv0UHwCUGCT92MGORik=
+github.com/alecthomas/jsonschema v0.0.0-20200530073317-71f438968921 h1:T3+cD5fYvuH36h7EZq+TDpm+d8a6FSD4pQsbmuGGQ8o=
+github.com/alecthomas/jsonschema v0.0.0-20200530073317-71f438968921/go.mod h1:/n6+1/DWPltRLWL/VKyUxg6tzsl5kHUCcraimt4vr60=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
