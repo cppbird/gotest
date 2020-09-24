@@ -1,0 +1,28 @@
+select  '<%=log_date%>'  as `date`, platform, version,
+ avg(if(event_id = 'bbq.general.activating.track', get_json_object(extended_fields, '$.args5'), null)) as app_start_avg,
+ PERCENTILE ( if( event_id = 'bbq.general.activating.track',  cast(get_json_object(extended_fields, '$.args5') as bigint) , null),  0.8) as app_start_p8,
+PERCENTILE (if(event_id = 'bbq.general.activating.track', cast(get_json_object(extended_fields, '$.args5') as bigint) , null), 0.9) as app_start_p9,
+avg(if(event_id in ('bbq.general-player.player.preplay.click',  'bbq.general-player.player.preplay.player'), get_json_object(extended_fields, '$.args7'), null)) as first_frame_avg,
+PERCENTILE(if(event_id in ('bbq.general-player.player.preplay.click',  'bbq.general-player.player.preplay.player'), cast(get_json_object(extended_fields, '$.args7')as bigint) , null), 0.8) as first_frame_p8,
+PERCENTILE(if(event_id in ('bbq.general-player.player.preplay.click', 'bbq.general-player.player.preplay.player'), cast(get_json_object(extended_fields, '$.args7')as bigint) , null), 0.9) as first_frame_p9,
+count(if(event_id in ('bbq.general-player.player.frozen.click', 'bbq.general-player.player.frozen.player'), 1, null)) as play_buffer_count,
+count(if(event_id in ('bbq.general-player.player.failed.click',  'bbq.general-player.player.failed.player'), 1, null)) as play_fail_count,
+avg(if(event_id= 'bbq.general.loading.track' and get_json_object(extended_fields, '$.args5')='rcmd',  get_json_object(extended_fields, '$.args6'), null)) as rcmd_avg,
+PERCENTILE(if(event_id= 'bbq.general.loading.track' and get_json_object(extended_fields, '$.args5')='rcmd',  cast(get_json_object(extended_fields, '$.args6') as bigint), null), 0.8) as rcmd_p8,
+PERCENTILE(if(event_id= 'bbq.general.loading.track' and get_json_object(extended_fields, '$.args5')='rcmd',  cast(get_json_object(extended_fields, '$.args6')as bigint) , null), 0.9) as rcmd_p9,
+avg(if(event_id= 'bbq.general.loading.track' and get_json_object(extended_fields, '$.args5')='follow',  get_json_object(extended_fields, '$.args6'), null)) as follow_avg,
+PERCENTILE(if(event_id= 'bbq.general.loading.track' and get_json_object(extended_fields, '$.args5')='follow',  cast(get_json_object(extended_fields, '$.args6')as bigint) , null), 0.8) as follow_p8,
+PERCENTILE(if(event_id= 'bbq.general.loading.track' and get_json_object(extended_fields, '$.args5')='follow',  cast(get_json_object(extended_fields, '$.args6')as bigint) , null), 0.9) as follow_p9,
+avg(if(event_id= 'bbq.general.loading.track' and get_json_object(extended_fields, '$.args5')='spaces',  get_json_object(extended_fields, '$.args6'), null)) as spaces_avg,
+PERCENTILE(if(event_id= 'bbq.general.loading.track' and get_json_object(extended_fields, '$.args5')='spaces',  cast(get_json_object(extended_fields, '$.args6')as bigint) , null), 0.8) as spaces_p8,
+PERCENTILE(if(event_id= 'bbq.general.loading.track' and get_json_object(extended_fields, '$.args5')='spaces',  cast(get_json_object(extended_fields, '$.args6')as bigint) , null), 0.9) as spaces_p9,
+avg(if(event_id= 'bbq.general.loading.track' and get_json_object(extended_fields, '$.args5')="video-shot",   get_json_object(extended_fields, '$.args6'), null)) as video_shot_avg,
+PERCENTILE(if(event_id= 'bbq.general.loading.track' and get_json_object(extended_fields, '$.args5')='video-shot',  cast(get_json_object(extended_fields, '$.args6')as bigint) , null), 0.8) as video_shot_p8,
+PERCENTILE(if(event_id= 'bbq.general.loading.track' and get_json_object(extended_fields, '$.args5')='video-shot',  cast(get_json_object(extended_fields, '$.args6')as bigint) , null), 0.9) as video_shot_p9,
+avg(if(event_id= 'bbq.general.loading.track' and get_json_object(extended_fields, '$.args5')='discover',  get_json_object(extended_fields, '$.args6'), null)) as topic_avg,
+PERCENTILE(if(event_id= 'bbq.general.loading.track' and get_json_object(extended_fields, '$.args5')='discover',  cast(get_json_object(extended_fields, '$.args6')as bigint) , null), 0.8) as topic_p8,
+PERCENTILE(if(event_id= 'bbq.general.loading.track' and get_json_object(extended_fields, '$.args5')='discover',  cast(get_json_object(extended_fields, '$.args6')as bigint) , null), 0.9) as topic_p9,
+count(if(event_id in ('bbq.general-player.player.ptime.click' , 'bbq.general-player.player.ptime.player' ), 1, null)) as play_cnt
+ from  bili_bbq.bbq_ubt
+where log_date='<%=log_date%>' and app_id=10 group by platform, version
+distribute by rand(10)
