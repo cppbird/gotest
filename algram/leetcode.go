@@ -1,4 +1,4 @@
-package main
+package algram
 
 import (
 	"fmt"
@@ -7,10 +7,6 @@ import (
 
 	"github.com/0xAX/go-algorithms/stack"
 )
-
-func main() {
-	fmt.Println(isValid("()"))
-}
 
 func isValid(s string) bool {
 	length := len(s)
